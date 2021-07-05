@@ -1,0 +1,58 @@
+@import './normalize.css';
+
+:root {
+    --color-text: #666;
+    --color-high-text: #ff5777;
+    --color-tint: #ff8198;
+    --color-background: #fff;
+    --font-size: 14px;
+    --line-height: 1.5;
+
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "微软雅黑";
+    user-select: none;
+    /*禁止用户选中信息*/
+    -webkit-tap-highlight-color: transparent;
+    /* [0]苹果浏览器引擎 [1]点击[2]背景高亮[3]颜色数值*/
+    background: var(--color-background);
+    color: var(--color-text);
+    width: 100vw;
+}
+
+a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.clear-fix::after {
+    clear: both;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+
+}
+
+.clear-fix {
+    zoom: 1;
+    /*缩放比例*/
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
