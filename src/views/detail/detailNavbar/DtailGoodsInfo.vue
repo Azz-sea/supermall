@@ -12,6 +12,7 @@
         :src="item"
         :key="index"
         alt=""
+        @load="imgLoad"
       />
     </div>
   </div>
@@ -22,6 +23,24 @@ export default {
   props: {
     detailInfo: {
       type: Object,
+    },
+  },
+  data() {
+    return {
+      counter: 0,
+      imagesLength: 0,
+    };
+  },
+  methods: {
+    imgLoad() {
+      if (++this.counter === this.imagesLength) {
+        this.$emit("imageload");
+      }
+    },
+  },
+  watch: {
+    detailInfo() {
+      this.imagesLength = this.detailInfo.detailImage[0].list.length;
     },
   },
 };

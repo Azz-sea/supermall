@@ -46,7 +46,7 @@ import FeatureView from "./childComps/FeatureView.vue";
 import TabControl from "../../components/content/tabControl/TabControl.vue";
 import GoodList from "../../components/content/goods/GoodList.vue";
 import Scroll from "../../components/common/scroll/Scroll.vue";
-import BackTop from "../../components/content/backTop/BackTop.vue";
+import { backTopMixin } from "../../common/mixin";
 
 export default {
   components: {
@@ -57,8 +57,8 @@ export default {
     TabControl,
     GoodList,
     Scroll,
-    BackTop,
   },
+  mixins: [backTopMixin],
 
   data() {
     return {
@@ -70,7 +70,7 @@ export default {
         sell: { page: 0, list: [] },
       },
       currentType: "pop",
-      isBackTop: false,
+
       tabOffSetTop: 0,
       isTabFixd: false,
       saveY: 0,
@@ -102,7 +102,7 @@ export default {
       this.$refs.scroll.scrollTo(0, 0);
     },
     contentScroll(position) {
-      this.isBackTop = -position.y >= 1000;
+      this.isBackTop = -position.y >= 3000;
       this.isTabFixd = -position.y >= this.tabOffSetTop;
     },
     loadMore() {
@@ -132,6 +132,7 @@ export default {
       getHomeMultidata().then((res) => {
         this.banners = res.data.data.banner.list;
         this.recommends = res.data.data.recommend.list;
+        console.log(res);
       });
     },
     getHomeGoods(type) {

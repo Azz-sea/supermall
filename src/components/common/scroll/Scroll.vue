@@ -33,6 +33,7 @@ export default {
       observeImage: true,
       click: true,
     });
+
     this.scroll.on("scroll", (position) => {
       this.$emit("scroll", position);
     });
